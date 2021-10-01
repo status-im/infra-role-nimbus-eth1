@@ -4,7 +4,13 @@ This role provisions a [nimbus-eth1](https://github.com/status-im/nimbus-eth1) i
 
 # Ports
 
-__TODO__
+The service exposes five ports by default:
+
+* `30303` - DevP2P peering port. Must __ALWAYS__ be public.
+* `8545` - JSON RPC port. Must __NEVER__ be public.
+* `8546` - WebSocket port. Must __NEVER__ be public.
+* `8547` - GraphQL port. Must __NEVER__ be public.
+* `9093` - Prometheus metrics port. Should not be public.
 
 # Installation
 

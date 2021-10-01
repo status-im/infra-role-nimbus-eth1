@@ -1,0 +1,48 @@
+---
+nimbus_eth1_service_name: 'nimbus-eth1-{{ nimbus_eth1_network }}-{{ nimbus_eth1_repo_branch }}'
+nimbus_eth1_service_path: '/data/{{ nimbus_eth1_service_name }}'
+nimbus_eth1_service_user: 'nimbus'
+nimbus_eth1_service_group: 'staff'
+
+# Repo
+nimbus_eth1_repo_branch: 'master'
+nimbus_eth1_repo_url: 'https://github.com/status-im/nimbus-eth1'
+nimbus_eth1_repo_path: '{{ nimbus_eth1_service_path }}/repo'
+
+# Config
+nimbus_eth1_valid_log_levels:  [TRACE, DEBUG, INFO, NOTICE, WARN, ERROR, FATAL]
+nimbus_eth1_log_level: 'INFO'
+nimbus_eth1_valid_networks: [mainnet, ropsten, rinkeby, goerli, kovan]
+nimbus_eth1_network: 'mainnet'
+nimbus_eth1_data_path: '{{ nimbus_eth1_service_path }}/data'
+nimbus_eth1_data_folder: 'shared_{{ nimbus_eth1_network }}_0'
+nimbus_eth1_logs_link: '{{ nimbus_eth1_service_path }}/logs'
+nimbus_eth1_max_peers: 25
+nimbus_eth1_discovery_mode: 'V4' # None, V4, V5
+# Optional improvement for connectivity
+#nimbus_eth1_public_address: '12.34.56.78'
+
+# Ports
+nimbus_eth1_listening_addr: '0.0.0.0'
+nimbus_eth1_listening_port: 30303
+nimbus_eth1_discovery_port: 30303
+nimbus_eth1_rpc_enabled: true
+nimbus_eth1_rpc_address: '127.0.0.1'
+nimbus_eth1_rpc_port: 8545
+nimbus_eth1_ws_enabled: false
+nimbus_eth1_ws_address: '127.0.0.1'
+nimbus_eth1_ws_port: 8546
+nimbus_eth1_graphql_enabled: false
+nimbus_eth1_graphql_address: '127.0.0.1'
+nimbus_eth1_graphql_port: 8547
+nimbus_eth1_metrics_enabled: true
+nimbus_eth1_metrics_address: '127.0.0.1'
+nimbus_eth1_metrics_port: 9093
+
+# Build
+nimbus_eth1_build_timer_enabled: true
+nimbus_eth1_build_service_name: 'build-{{ nimbus_eth1_service_name }}'
+nimbus_eth1_build_script_path: '{{ nimbus_eth1_service_path }}/build.sh'
+nimbus_eth1_build_frequency: 'daily'
+nimbus_eth1_build_timer_timeout: 3600
+nimbus_eth1_build_days_kept: 3

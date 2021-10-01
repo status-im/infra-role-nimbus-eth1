@@ -1,0 +1,51 @@
+[Unit]
+Description=Nimbus Eth1 node on {{ nimbus_eth1_network }} network ({{ nimbus_eth1_repo_branch }})
+Documentation=https://github.com/status-im/nimbus-eth1
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User={{ nimbus_eth1_service_user }}
+Group={{ nimbus_eth1_service_group }}
+WorkingDirectory={{ nimbus_eth1_service_path }}
+SyslogIdentifier={{ nimbus_eth1_service_name }}
+SyslogFacility=local6
+SyslogLevel=debug
+Restart=on-failure
+ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus \
+    --network={{ nimbus_eth1_network }} \
+    --data-dir='{{ nimbus_eth1_data_path }}/{{ nimbus_eth1_data_folder }}' \
+{% if nimbus_eth1_public_address is defined %}
+    --nat=extip:{{ nimbus_eth1_public_address }} \
+{% endif %}
+{% if nimbus_eth1_discovery_mode %}
+    --discovery={{ nimbus_eth1_discovery_mode }} \
+{% endif %}
+    --log-level={{ nimbus_eth1_log_level }} \
+    --listen-address={{ nimbus_eth1_listening_addr }} \
+    --tcp-port={{ nimbus_eth1_listening_port }} \
+    --udp-port={{ nimbus_eth1_discovery_port }} \
+    --max-peers={{ nimbus_eth1_max_peers }} \
+    --rpc={{ nimbus_eth1_rpc_enabled | to_json }} \
+{% if nimbus_eth1_rpc_enabled %}
+    --rpc-address={{ nimbus_eth1_rpc_address }} \
+    --rpc-port={{ nimbus_eth1_rpc_port }} \
+{% endif %}
+    --ws={{ nimbus_eth1_ws_enabled | to_json }} \
+{% if nimbus_eth1_ws_enabled %}
+    --ws-address={{ nimbus_eth1_ws_address }} \
+    --ws-port={{ nimbus_eth1_ws_port }} \
+{% endif %}
+    --graphql={{ nimbus_eth1_graphql_enabled | to_json }} \
+{% if nimbus_eth1_graphql_enabled %}
+    --graphql-address={{ nimbus_eth1_graphql_address }} \
+    --graphql-port={{ nimbus_eth1_graphql_port }} \
+{% endif %}
+    --metrics={{ nimbus_eth1_metrics_enabled | to_json }} \
+{% if nimbus_eth1_metrics_enabled %}
+    --metrics-address={{ nimbus_eth1_metrics_address }} \
+    --metrics-port={{ nimbus_eth1_metrics_port }}
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target

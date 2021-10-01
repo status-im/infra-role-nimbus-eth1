@@ -1,0 +1,8 @@
+---
+- name: Create directories
+  file:
+    path: '{{ nimbus_eth1_service_path }}'
+    owner: '{{ nimbus_eth1_service_user }}'
+    group: '{{ nimbus_eth1_service_group }}'
+    mode: 0750
+    state: directory

@@ -22,7 +22,7 @@ function buildBinaries() {
 
     ${NICE} make -j6 update
     ${NICE} make -j6 nimbus \
-        LOG_LEVEL="TRACE" NIMFLAGS="-d:testnet_servers_image -d:noSignalHandler"
+        LOG_LEVEL="TRACE" NIMFLAGS="{{ nimbus_eth1_build_nim_flags | join(" ") }}"
 
     # Rename binaries to match commit they were built from.
     mv "build/nimbus" "build/nimbus_${COMMIT}"
@@ -38,6 +38,7 @@ function buildBinaries() {
 
 BRANCH="{{ nimbus_eth1_repo_branch }}"
 SERVICE="{{ nimbus_eth1_service_name }}.service"
+BUILD_DIR="{{ nimbus_eth1_repo_path }}"
 
 if [[ "${USER}" != "{{ nimbus_eth1_service_user }}" ]]; then
     echo "Incorrect user: ${USER}" >&2
@@ -46,7 +47,7 @@ if [[ "${USER}" != "{{ nimbus_eth1_service_user }}" ]]; then
 fi
 
 # Build the Beacon node binaries
-pushd repo >/dev/null
+cd "${BUILD_DIR}"
 
 # Detached HEAD means we're probably on a tag
 if headIsDetached; then
@@ -74,7 +75,5 @@ else
     echo " >>> Restarting service..."
     sudo systemctl restart "${SERVICE}"
 fi
-
-popd >/dev/null
 
 echo " >>> SUCCESS"

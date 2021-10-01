@@ -20,8 +20,8 @@ function buildBinaries() {
     # Lower CPU and I/O priority so it doesn't affect the running beacon node
     NICE="nice -n 19 ionice -c2 -n7"
 
-    ${NICE} make -j6 update
-    ${NICE} make -j6 nimbus \
+    ${NICE} make -j{{ ansible_processor_vcpus }} update
+    ${NICE} make -j{{ ansible_processor_vcpus }} nimbus \
         LOG_LEVEL="TRACE" NIMFLAGS="{{ nimbus_eth1_build_nim_flags | join(" ") }}"
 
     # Rename binaries to match commit they were built from.

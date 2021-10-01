@@ -25,5 +25,14 @@ Add to your `requirements.yml` file:
 
 The crucial settings are:
 ```yaml
-TODO
+# branch which should be built
+nimbus_eth1_repo_branch: 'stable'
+# ethereum network to connect to
+nimbus_eth1_network: 'mainnet'
+# increase maximum number of peers
+nimbus_eth1_max_peers: 160
+# optional setting for debug mode
+nimbus_eth1_log_level: 'DEBUG'
+# optional improvement for connectivity
+nimbus_eth1_public_address: '12.34.56.78'
 ```

@@ -36,3 +36,32 @@ nimbus_eth1_log_level: 'DEBUG'
 # optional improvement for connectivity
 nimbus_eth1_public_address: '12.34.56.78'
 ```
+
+# Usage
+
+Assuming the `master` branch was built you can manage the service with:
+```sh
+systemctl start nimbus-eth1-mainnet-master
+systemctl status nimbus-eth1-mainnet-master
+systemctl stop nimbus-eth1-mainnet-master
+```
+You can view logs under:
+```sh
+tail -f /data/nimbus-eth1-mainnet-master/logs/service.log
+```
+The service will store all data in the `/data/nimbus-eth1-mainnet-master/data` directory.
+
+# Building
+
+A timer will be installed to build the image:
+```sh
+systemctl list-timers 'build-nimbus-eth1-*'
+```
+To rebuild the image:
+```sh
+systemctl start build-nimbus-eth1-mainnet-master.service
+```
+To check build logs use:
+```sh
+journalctl -u build-nimbus-eth1-mainnet-master.service
+```

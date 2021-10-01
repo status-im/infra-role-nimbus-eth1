@@ -48,3 +48,8 @@ nimbus_eth1_build_days_kept: 3
 nimbus_eth1_repo_branch: 'master'
 nimbus_eth1_repo_url: 'https://github.com/status-im/nimbus-eth1'
 nimbus_eth1_repo_path: '{{ nimbus_eth1_service_path }}/repo'
+
+# Consul service definition settings
+nimbus_eth1_consul_service_name: 'nimbus-eth1'
+nimbus_eth1_consul_service_file_name: '{{ nimbus_eth1_service_name | replace("-", "_") }}'
+nimbus_eth1_consul_metrics_service_name: '{{ nimbus_eth1_consul_service_name }}-metrics'

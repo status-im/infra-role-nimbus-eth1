@@ -36,6 +36,10 @@ nimbus_eth1_metrics_enabled: true
 nimbus_eth1_metrics_address: '127.0.0.1'
 nimbus_eth1_metrics_port: 9093
 
+# Optional API encryption using 32 byte hex-encoded shared secret.
+#nimbus_eth1_jwt_secret: ~
+nimbus_eth1_jwt_secret_path: '{{ nimbus_eth1_data_path }}/jwt.hex'
+
 # Build
 nimbus_eth1_build_timer_enabled: true
 nimbus_eth1_build_service_name: 'build-{{ nimbus_eth1_service_name }}'

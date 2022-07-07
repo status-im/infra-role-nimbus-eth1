@@ -24,6 +24,9 @@ ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus \
 {% if nimbus_eth1_discovery_mode %}
     --discovery={{ nimbus_eth1_discovery_mode }} \
 {% endif %}
+{% if nimbus_eth1_jwt_secret is defined %}
+    --jwt-secret={{ nimbus_eth1_jwt_secret_path | mandatory }} \
+{% endif %}
     --rpc={{ nimbus_eth1_rpc_enabled | to_json }} \
 {% if nimbus_eth1_rpc_enabled %}
     --rpc-address={{ nimbus_eth1_rpc_address }} \

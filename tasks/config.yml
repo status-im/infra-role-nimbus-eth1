@@ -5,7 +5,7 @@
     owner:  '{{ nimbus_eth1_service_user }}'
     group:  '{{ nimbus_eth1_service_group }}'
     state:  'directory'
-    mode:   0750
+    mode:   0775
 
 - name: Create JSON RPC wrapper script
   template:
@@ -13,7 +13,7 @@
     dest:   '{{ nimbus_eth1_rpc_script_path }}'
     owner:  '{{ nimbus_eth1_service_user }}'
     group:  '{{ nimbus_eth1_service_group }}'
-    mode:   0750
+    mode:   0755
   when: nimbus_eth1_rpc_enabled
 
 - name: Create JWT shared secret file

@@ -37,6 +37,16 @@ ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus \
     --ws-address={{ nimbus_eth1_ws_address }} \
     --ws-port={{ nimbus_eth1_ws_port }} \
 {% endif %}
+    --engine-api={{ nimbus_eth1_engine_http_enabled | to_json }} \
+{% if nimbus_eth1_engine_http_enabled %}
+    --engine-api-address={{ nimbus_eth1_engine_http_address }} \
+    --engine-api-port={{ nimbus_eth1_engine_http_port }} \
+{% endif %}
+    --engine-api-ws={{ nimbus_eth1_engine_ws_enabled | to_json }} \
+{% if nimbus_eth1_engine_ws_enabled %}
+    --engine-api-ws-address={{ nimbus_eth1_engine_ws_address }} \
+    --engine-api-ws-port={{ nimbus_eth1_engine_ws_port }} \
+{% endif %}
     --graphql={{ nimbus_eth1_graphql_enabled | to_json }} \
 {% if nimbus_eth1_graphql_enabled %}
     --graphql-address={{ nimbus_eth1_graphql_address }} \

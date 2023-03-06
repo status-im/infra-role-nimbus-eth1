@@ -26,9 +26,15 @@ nimbus_eth1_discovery_port: 30303
 nimbus_eth1_rpc_enabled: true
 nimbus_eth1_rpc_address: '127.0.0.1'
 nimbus_eth1_rpc_port: 8545
+nimbus_eth1_engine_http_enabled: false
+nimbus_eth1_engine_http_address: '127.0.0.1'
+nimbus_eth1_engine_http_port: 8550
 nimbus_eth1_ws_enabled: false
 nimbus_eth1_ws_address: '127.0.0.1'
 nimbus_eth1_ws_port: 8546
+nimbus_eth1_engine_ws_enabled: false
+nimbus_eth1_engine_ws_address: '127.0.0.1'
+nimbus_eth1_engine_ws_port: 8551
 nimbus_eth1_graphql_enabled: false
 nimbus_eth1_graphql_address: '127.0.0.1'
 nimbus_eth1_graphql_port: 8547

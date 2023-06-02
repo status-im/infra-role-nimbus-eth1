@@ -1,11 +1,14 @@
 ---
 - name: Create directories
   file:
-    path:   '{{ nimbus_eth1_service_path }}'
+    path:   '{{ item }}'
     owner:  '{{ nimbus_eth1_service_user }}'
     group:  '{{ nimbus_eth1_service_group }}'
     state:  'directory'
     mode:   0775
+  with_items:
+    - '{{ nimbus_eth1_service_path }}'
+    - '{{ nimbus_eth1_data_path }}'
 
 - name: Create JSON RPC wrapper script
   template:

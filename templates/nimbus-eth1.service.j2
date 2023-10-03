@@ -29,6 +29,7 @@ ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus \
 {% endif %}
     --rpc={{ nimbus_eth1_rpc_enabled | to_json }} \
 {% if nimbus_eth1_rpc_enabled %}
+    --rpc-api={{ nimbus_eth1_rpc_api | join(",") }} \
     --rpc-address={{ nimbus_eth1_rpc_address }} \
     --rpc-port={{ nimbus_eth1_rpc_port }} \
 {% endif %}

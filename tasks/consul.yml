@@ -12,7 +12,7 @@
         checks:
           - name: '{{ nimbus_eth1_consul_service_name }}-health'
             type: 'script'
-            script: '{{ nimbus_eth1_service_path }}/rpc.sh discv5_nodeInfo'
+            script: '{{ nimbus_eth1_service_path }}/rpc.sh eth_syncing'
             interval: '60s'
             timeout: '10s'
 
@@ -26,4 +26,4 @@
         checks:
           - name: '{{ nimbus_eth1_consul_metrics_service_name }}-health'
             type: 'http'
-            http: 'http://localhost:{{ nimbus_eth1_metrics_port }}/metrics'
+            http: 'http://localhost:{{ nimbus_eth1_metrics_port }}/health'

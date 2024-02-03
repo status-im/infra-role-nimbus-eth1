@@ -31,14 +31,14 @@ ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus \
     --ws={{ nimbus_eth1_ws_enabled | to_json }} \
     --graphql={{ nimbus_eth1_graphql_enabled | to_json }} \
 {% if nimbus_eth1_rpc_enabled or nimbus_eth1_ws_enabled or nimbus_eth1_graphql_enabled %}
-    --http-address={{ nimbus_eth1_rpc_address }} \
-    --http-port={{ nimbus_eth1_rpc_port }} \
+    --http-address={{ nimbus_eth1_http_address }} \
+    --http-port={{ nimbus_eth1_http_port }} \
 {% endif %}
 {% if nimbus_eth1_rpc_enabled %}
     --rpc-api={{ nimbus_eth1_rpc_api | join(",") }} \
 {% endif %}
 {% if nimbus_eth1_ws_enabled %}
-    --rpc-api={{ nimbus_eth1_ws_api | join(",") }} \
+    --ws-api={{ nimbus_eth1_ws_api | join(",") }} \
 {% endif %}
     --engine-api={{ nimbus_eth1_engine_http_enabled | to_json }} \
     --engine-api-ws={{ nimbus_eth1_engine_ws_enabled | to_json }} \

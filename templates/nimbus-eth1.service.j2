@@ -28,30 +28,23 @@ ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus \
     --jwt-secret={{ nimbus_eth1_jwt_secret_path | mandatory }} \
 {% endif %}
     --rpc={{ nimbus_eth1_rpc_enabled | to_json }} \
+    --ws={{ nimbus_eth1_ws_enabled | to_json }} \
+    --graphql={{ nimbus_eth1_graphql_enabled | to_json }} \
+{% if nimbus_eth1_rpc_enabled or nimbus_eth1_ws_enabled or nimbus_eth1_graphql_enabled %}
+    --http-address={{ nimbus_eth1_http_address }} \
+    --http-port={{ nimbus_eth1_http_port }} \
+{% endif %}
 {% if nimbus_eth1_rpc_enabled %}
     --rpc-api={{ nimbus_eth1_rpc_api | join(",") }} \
-    --rpc-address={{ nimbus_eth1_rpc_address }} \
-    --rpc-port={{ nimbus_eth1_rpc_port }} \
 {% endif %}
-    --ws={{ nimbus_eth1_ws_enabled | to_json }} \
 {% if nimbus_eth1_ws_enabled %}
-    --ws-address={{ nimbus_eth1_ws_address }} \
-    --ws-port={{ nimbus_eth1_ws_port }} \
+    --ws-api={{ nimbus_eth1_ws_api | join(",") }} \
 {% endif %}
     --engine-api={{ nimbus_eth1_engine_http_enabled | to_json }} \
-{% if nimbus_eth1_engine_http_enabled %}
+    --engine-api-ws={{ nimbus_eth1_engine_ws_enabled | to_json }} \
+{% if nimbus_eth1_engine_http_enabled or nimbus_eth1_engine_ws_enabled %}
     --engine-api-address={{ nimbus_eth1_engine_http_address }} \
     --engine-api-port={{ nimbus_eth1_engine_http_port }} \
-{% endif %}
-    --engine-api-ws={{ nimbus_eth1_engine_ws_enabled | to_json }} \
-{% if nimbus_eth1_engine_ws_enabled %}
-    --engine-api-ws-address={{ nimbus_eth1_engine_ws_address }} \
-    --engine-api-ws-port={{ nimbus_eth1_engine_ws_port }} \
-{% endif %}
-    --graphql={{ nimbus_eth1_graphql_enabled | to_json }} \
-{% if nimbus_eth1_graphql_enabled %}
-    --graphql-address={{ nimbus_eth1_graphql_address }} \
-    --graphql-port={{ nimbus_eth1_graphql_port }} \
 {% endif %}
     --metrics={{ nimbus_eth1_metrics_enabled | to_json }} \
 {% if nimbus_eth1_metrics_enabled %}

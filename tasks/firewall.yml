@@ -1,6 +1,6 @@
 ---
 - name: Open ports in iptables firewall
-  include_role: name=open-ports
+  include_role: name=infra-role-open-ports
   vars:
     open_ports_default_comment: '{{ nimbus_eth1_service_name }}'
     open_ports_default_chain: 'SERVICES'

@@ -13,7 +13,7 @@ nimbus_eth1_rpc_script_path: '{{ nimbus_eth1_service_path }}/rpc.sh'
 # Config
 nimbus_eth1_valid_log_levels:  [TRACE, DEBUG, INFO, NOTICE, WARN, ERROR, FATAL]
 nimbus_eth1_log_level: 'INFO'
-nimbus_eth1_valid_networks: [mainnet, ropsten, rinkeby, goerli, kovan, sepolia]
+nimbus_eth1_valid_networks: [mainnet, sepolia, holestky]
 nimbus_eth1_network: 'mainnet'
 nimbus_eth1_max_peers: 25
 nimbus_eth1_discovery_mode: 'V4' # None, V4, V5

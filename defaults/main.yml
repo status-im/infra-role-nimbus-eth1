@@ -8,7 +8,6 @@ nimbus_eth1_service_group: 'staff'
 nimbus_eth1_data_path: '{{ nimbus_eth1_service_path }}/data'
 nimbus_eth1_data_folder: 'shared_{{ nimbus_eth1_network }}_0'
 nimbus_eth1_logs_link: '{{ nimbus_eth1_service_path }}/logs'
-nimbus_eth1_rpc_script_path: '{{ nimbus_eth1_service_path }}/rpc.sh'
 
 # Config
 nimbus_eth1_valid_log_levels:  [TRACE, DEBUG, INFO, NOTICE, WARN, ERROR, FATAL]
@@ -48,7 +47,6 @@ nimbus_eth1_jwt_secret_path: '{{ nimbus_eth1_data_path }}/jwt.hex'
 # Build
 nimbus_eth1_build_timer_enabled: true
 nimbus_eth1_build_service_name: 'build-{{ nimbus_eth1_service_name }}'
-nimbus_eth1_build_script_path: '{{ nimbus_eth1_service_path }}/build.sh'
 nimbus_eth1_build_frequency: 'daily'
 nimbus_eth1_build_timer_timeout: 3600
 nimbus_eth1_build_days_kept: 3

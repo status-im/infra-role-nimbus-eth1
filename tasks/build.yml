@@ -8,14 +8,6 @@
     update: true
   become_user: '{{ nimbus_eth1_service_user }}'
 
-- name: Create build script
-  template:
-    src: 'build.sh.j2'
-    dest: '{{ nimbus_eth1_build_script_path }}'
-    owner: '{{ nimbus_eth1_service_user }}'
-    group: '{{ nimbus_eth1_service_group }}'
-    mode: 0775
-
 - name: Check if node binary link exists
   stat:
     path: '{{ nimbus_eth1_repo_path }}/build/nimbus_execution_client'
@@ -34,4 +26,4 @@
     systemd_timer_frequency: '{{ nimbus_eth1_build_frequency }}'
     systemd_timer_timeout_sec: '{{ nimbus_eth1_build_timer_timeout }}'
     systemd_timer_work_dir: '{{ nimbus_eth1_service_path }}'
-    systemd_timer_script_path: '{{ nimbus_eth1_build_script_path }}'
+    systemd_timer_script_path: '{{ nimbus_eth1_service_path }}/build.sh'

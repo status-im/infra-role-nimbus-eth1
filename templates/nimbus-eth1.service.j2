@@ -29,7 +29,6 @@ ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus_execution_client \
 {% endif %}
     --rpc={{ nimbus_eth1_rpc_enabled | to_json }} \
     --ws={{ nimbus_eth1_ws_enabled | to_json }} \
-    --graphql={{ nimbus_eth1_graphql_enabled | to_json }} \
 {% if nimbus_eth1_rpc_enabled or nimbus_eth1_ws_enabled or nimbus_eth1_graphql_enabled %}
     --http-address={{ nimbus_eth1_http_address }} \
     --http-port={{ nimbus_eth1_http_port }} \

@@ -15,6 +15,7 @@ nimbus_eth1_log_level: 'INFO'
 nimbus_eth1_valid_networks: [mainnet, sepolia, holesky, hoodi]
 nimbus_eth1_network: 'mainnet'
 nimbus_eth1_max_peers: 25
+nimbus_eth1_gas_limit: 36000000
 nimbus_eth1_discovery_mode: 'V4' # None, V4, V5
 nimbus_eth1_public_address: '{{ ansible_host }}'
 

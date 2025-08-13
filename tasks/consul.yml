@@ -16,7 +16,7 @@
         address: '{{ nimbus_eth1_public_address }}'
         tags: ['{{ env }}.{{ stage }}', 'nimbus-eth1']
         checks:
-          - name: '{{ nimbus_eth1_consul_service_name }}-health'
+          - id: '{{ nimbus_eth1_service_name }}-health'
             type: 'script'
             script: '{{ nimbus_eth1_service_path }}/rpc.sh eth_syncing'
 
@@ -28,6 +28,6 @@
         meta:
           container: '{{ nimbus_eth1_service_name }}'
         checks:
-          - name: '{{ nimbus_eth1_consul_metrics_service_name }}-health'
+          - id: '{{ nimbus_eth1_service_name }}-health'
             type: 'http'
             http: 'http://localhost:{{ nimbus_eth1_metrics_port }}/health'

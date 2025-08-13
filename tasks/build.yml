@@ -6,6 +6,7 @@
     dest: '{{ nimbus_eth1_repo_path }}'
     force: true
     update: true
+  become: true
   become_user: '{{ nimbus_eth1_service_user }}'
 
 - name: Check if node binary link exists
@@ -14,7 +15,8 @@
   register: nimbus_eth1_bin
 
 - name: Create timer for build script
-  include_role: name=infra-role-systemd-timer
+  include_role:
+    name: infra-role-systemd-timer
   vars:
     systemd_timer_name: '{{ nimbus_eth1_build_service_name }}'
     systemd_timer_user: '{{ nimbus_eth1_service_user }}'

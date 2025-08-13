@@ -1,6 +1,7 @@
 ---
 - name: 'Create Consul service definition'
-  include_role: name=infra-role-consul-service
+  include_role:
+    name: infra-role-consul-service
   vars:
     consul_config_name: '{{ nimbus_eth1_consul_service_file_name }}'
     consul_default_check_disabled:           '{{ nimbus_eth1_consul_check_disabled }}'

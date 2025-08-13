@@ -28,6 +28,6 @@
         meta:
           container: '{{ nimbus_eth1_service_name }}'
         checks:
-          - id: '{{ nimbus_eth1_service_name }}-health'
+          - id: '{{ nimbus_eth1_service_name }}-metrics-health'
             type: 'http'
             http: 'http://localhost:{{ nimbus_eth1_metrics_port }}/health'

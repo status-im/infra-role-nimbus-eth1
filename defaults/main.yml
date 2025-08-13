@@ -70,6 +70,9 @@ nimbus_eth1_consul_service_file_name: '{{ nimbus_eth1_service_name | replace("-"
 nimbus_eth1_consul_metrics_service_name: '{{ nimbus_eth1_consul_service_name }}-metrics'
 nimbus_eth1_consul_check_disabled: false
 nimbus_eth1_consul_check_interval: '60s'
+# WARN: should be longer than rpc.sh timeout
+# consul script check failes immidiatly to critical in case of timeout
+# not taking into account failures_before_critical,
 nimbus_eth1_consul_check_timeout: '10s'
 nimbus_eth1_consul_success_before_passing: 0
 nimbus_eth1_consul_failures_before_warning: 2

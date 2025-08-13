@@ -4,6 +4,12 @@ nimbus_eth1_service_path: '/data/{{ nimbus_eth1_service_name }}'
 nimbus_eth1_service_user: 'nimbus'
 nimbus_eth1_service_group: 'staff'
 
+# Ability to prevernt restarts after service changes.
+# This is higher priority, than force_restart.
+nimbus_eth1_service_allow_restart: true
+# Force restart service on each ansible playbook run
+nimbus_eth1_service_force_restart: false
+
 # Paths
 nimbus_eth1_data_path: '{{ nimbus_eth1_service_path }}/data'
 nimbus_eth1_data_folder: 'shared_{{ nimbus_eth1_network }}_0'

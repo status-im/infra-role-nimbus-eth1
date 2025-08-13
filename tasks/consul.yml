@@ -3,6 +3,12 @@
   include_role: name=infra-role-consul-service
   vars:
     consul_config_name: '{{ nimbus_eth1_consul_service_file_name }}'
+    consul_check_disabled:           '{{ nimbus_eth1_consul_check_disabled }}'
+    consul_check_interval:           '{{ nimbus_eth1_consul_check_interval }}'
+    consul_check_timeout:            '{{ nimbus_eth1_consul_check_timeout }}'
+    consul_success_before_passing:   '{{ nimbus_eth1_consul_success_before_passing }}'
+    consul_failures_before_warning:  '{{ nimbus_eth1_consul_failures_before_warning }}'
+    consul_failures_before_critical: '{{ nimbus_eth1_consul_failures_before_critical }}'
     consul_services:
       - id: '{{ nimbus_eth1_service_name }}'
         name: '{{ nimbus_eth1_consul_service_name }}'
@@ -13,8 +19,6 @@
           - name: '{{ nimbus_eth1_consul_service_name }}-health'
             type: 'script'
             script: '{{ nimbus_eth1_service_path }}/rpc.sh eth_syncing'
-            interval: '60s'
-            timeout: '10s'
 
       - id: '{{ nimbus_eth1_service_name }}-metrics'
         name: '{{ nimbus_eth1_consul_metrics_service_name }}'

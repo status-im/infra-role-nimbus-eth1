@@ -62,3 +62,9 @@ nimbus_eth1_repo_path: '{{ nimbus_eth1_service_path }}/repo'
 nimbus_eth1_consul_service_name: 'nimbus-eth1'
 nimbus_eth1_consul_service_file_name: '{{ nimbus_eth1_service_name | replace("-", "_") }}'
 nimbus_eth1_consul_metrics_service_name: '{{ nimbus_eth1_consul_service_name }}-metrics'
+nimbus_eth1_consul_check_disabled: false
+nimbus_eth1_consul_check_interval: '60s'
+nimbus_eth1_consul_check_timeout: '10s'
+nimbus_eth1_consul_success_before_passing: 0
+nimbus_eth1_consul_failures_before_warning: 2
+nimbus_eth1_consul_failures_before_critical: 4

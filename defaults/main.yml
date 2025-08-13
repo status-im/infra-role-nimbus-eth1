@@ -59,7 +59,7 @@ nimbus_eth1_build_frequency: 'daily'
 nimbus_eth1_build_timer_timeout: 3600
 nimbus_eth1_build_days_kept: 3
 # FIXME: remove -d:disableMarchNative when https://github.com/bitcoin-core/secp256k1/issues/1623 is fixed
-nimbus_eth1_build_nim_flags: ['-d:chronicles_colors=none','-d:disableMarchNative']
+nimbus_eth1_build_nim_flags: ['-d:chronicles_colors=none', '-d:disableMarchNative']
 
 # Repo
 nimbus_eth1_repo_branch: 'master'

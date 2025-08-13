@@ -5,7 +5,7 @@
     owner:  '{{ nimbus_eth1_service_user }}'
     group:  '{{ nimbus_eth1_service_group }}'
     state:  'directory'
-    mode:   0775
+    mode:   '0775'
   with_items:
     - '{{ nimbus_eth1_service_path }}'
     - '{{ nimbus_eth1_data_path }}'
@@ -13,18 +13,18 @@
 - name: Create helper scripts
   template:
     src:   '{{ item }}'
-    dest:  '{{ nimbus_eth1_service_path }}/{{ item|basename|replace(".j2", "") }}'
+    dest:  '{{ nimbus_eth1_service_path }}/{{ item | basename | replace(".j2", "") }}'
     owner: '{{ nimbus_eth1_service_user }}'
     group: '{{ nimbus_eth1_service_group }}'
-    mode:  0775
+    mode:  '0775'
   with_fileglob:
     - 'templates/scripts/*'
 
 - name: Create JWT shared secret file
   copy:
-    dest:     '{{ nimbus_eth1_jwt_secret_path }}'
-    content:  '{{ nimbus_eth1_jwt_secret }}'
-    owner:    '{{ nimbus_eth1_service_user }}'
-    group:    '{{ nimbus_eth1_service_group }}'
-    mode:     0400
+    dest:    '{{ nimbus_eth1_jwt_secret_path }}'
+    content: '{{ nimbus_eth1_jwt_secret }}'
+    owner:   '{{ nimbus_eth1_service_user }}'
+    group:   '{{ nimbus_eth1_service_group }}'
+    mode:    '0400'
   when: nimbus_eth1_jwt_secret is defined

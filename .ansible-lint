@@ -1,0 +1,7 @@
+skip_list:
+  - fqcn[action-core]
+  - fqcn[action]
+  - name[missing]
+  - role-name
+  - yaml[colons]
+  - yaml[comments]

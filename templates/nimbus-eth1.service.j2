@@ -53,6 +53,10 @@ ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus_execution_client \
     --metrics-address={{ nimbus_eth1_metrics_address }} \
     --metrics-port={{ nimbus_eth1_metrics_port }} \
 {% endif %}
+{% if nimbus_eth1_portal_enabled %}
+    --history-expiry=true \
+    --portal-url={{ nimbus_eth1_portal_rpc_url }}
+{% endif %}
 
 [Install]
 WantedBy=multi-user.target

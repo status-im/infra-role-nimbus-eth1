@@ -17,6 +17,7 @@ ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus_execution_client \
     --data-dir='{{ nimbus_eth1_data_path }}/{{ nimbus_eth1_data_folder }}' \
     --nat=extip:{{ nimbus_eth1_public_address }} \
     --log-level={{ nimbus_eth1_log_level }} \
+    --log-format={{ nimbus_eth1_log_format }} \
     # Temporarily needed to fix Data dir already initialized with other network configuration \
     --debug-rewrite-datadir-id=true \
     --listen-address={{ nimbus_eth1_listening_addr }} \

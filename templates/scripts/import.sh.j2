@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-sudo -u '{{ nimbus_eth1_service_user }}' '{{ nimbus_eth1_repo_path }}'/build/nimbus_execution_client \
+sudo -u '{{ nimbus_eth1_service_user }}' '{{ nimbus_eth1_repo_path }}'/build/nimbus \
     import \
     --network='{{ nimbus_eth1_network }}' \
     --data-dir='{{ nimbus_eth1_data_path }}/{{ nimbus_eth1_data_folder }}' \

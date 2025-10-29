@@ -11,7 +11,7 @@
 
 - name: Check if node binary link exists
   stat:
-    path: '{{ nimbus_eth1_repo_path }}/build/nimbus_execution_client'
+    path: '{{ nimbus_eth1_repo_path }}/build/nimbus'
   register: nimbus_eth1_bin
 
 - name: Create timer for build script

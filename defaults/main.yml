@@ -56,6 +56,7 @@ nimbus_eth1_jwt_secret_path: '{{ nimbus_eth1_data_path }}/jwt.hex'
 # Build
 nimbus_eth1_build_timer_enabled: true
 nimbus_eth1_build_service_name: 'build-{{ nimbus_eth1_service_name }}'
+nimbus_eth1_build_jobs: '{{ ansible_processor_vcpus * 0.25 | round(0, "ceil") | int }}'
 nimbus_eth1_build_frequency: 'daily'
 nimbus_eth1_build_timer_timeout: 3600
 nimbus_eth1_build_days_kept: 3

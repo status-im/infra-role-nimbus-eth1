@@ -23,6 +23,9 @@ ExecStart={{ nimbus_eth1_repo_path }}/build/nimbus executionClient \
     --udp-port={{ nimbus_eth1_discovery_port }} \
     --max-peers={{ nimbus_eth1_max_peers }} \
     --gas-limit={{ nimbus_eth1_gas_limit }} \
+{% if nimbus_eth1_pruning_enabled %}
+    --prune \
+{% endif %}
 {% if nimbus_eth1_discovery_mode %}
     --discovery={{ nimbus_eth1_discovery_mode }} \
 {% endif %}

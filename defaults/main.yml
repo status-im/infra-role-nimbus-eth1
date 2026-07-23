@@ -23,7 +23,6 @@ nimbus_eth1_valid_networks: [mainnet, sepolia, holesky, hoodi]
 nimbus_eth1_network: 'mainnet'
 nimbus_eth1_max_peers: 25
 nimbus_eth1_gas_limit: 45000000
-nimbus_eth1_discovery_mode: 'V4' # None, V4, V5
 nimbus_eth1_public_address: '{{ ansible_host }}'
 nimbus_eth1_portal_enabled: false
 nimbus_eth1_portal_rpc_url: 'http://127.0.0.1:9901'

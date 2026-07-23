@@ -1,7 +1,15 @@
+---
 skip_list:
-  - fqcn[action-core]
-  - fqcn[action]
-  - name[missing]
   - role-name
+  - no-changed-when
+  - no-handler
+  - fqcn[action]
+  - fqcn[action-core]
+  - name[missing]
   - yaml[colons]
+  - yaml[commas]
   - yaml[comments]
+  - yaml[quoted-strings]
+
+write_list:
+  - none

@@ -7,7 +7,11 @@ function headIsDetached() {
 }
 
 function binaryExists() {
-    ls -l build/nimbus_${COMMIT} 2>&1 1>/dev/null
+    ls -l \
+{% for target in nimbus_eth1_build_targets %}
+        build/{{ target }}_${COMMIT} \
+{% endfor %}
+        2>&1 1>/dev/null
 }
 
 function fetchChanges() {
@@ -21,14 +25,18 @@ function buildBinaries() {
     NICE="nice -n 19 ionice -c2 -n7"
 
     ${NICE} make -j{{ nimbus_eth1_build_jobs }} update
-    ${NICE} make -j{{ nimbus_eth1_build_jobs }} nimbus \
+    ${NICE} make -j{{ nimbus_eth1_build_jobs }} {{ nimbus_eth1_build_targets | join(" ") }}
         LOG_LEVEL="TRACE" NIMFLAGS="{{ nimbus_eth1_build_nim_flags | join(" ") }}"
 
     # Rename binaries to match commit they were built from.
-    mv "build/nimbus" "build/nimbus_${COMMIT}"
+{% for target in nimbus_eth1_build_targets %}
+    mv "build/{{ target }}" "build/{{ target }}_${COMMIT}"
+{% endfor %}
 
     # Create a symbolic link to the latest version
-    ln -frs build/nimbus_${COMMIT} build/nimbus
+{% for target in nimbus_eth1_build_targets %}
+    ln -vfrs build/{{ target }}_${COMMIT} build/{{ target }}
+{% endfor %}
 
     # Delete copies that are older than N days
     find build -mtime +{{ nimbus_eth1_build_days_kept }} -exec rm '{}' \+

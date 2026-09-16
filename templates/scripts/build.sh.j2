@@ -24,6 +24,7 @@ function buildBinaries() {
     # Lower CPU and I/O priority so it doesn't affect the running beacon node
     NICE="nice -n 19 ionice -c2 -n7"
 
+
     ${NICE} make -j{{ nimbus_eth1_build_jobs }} update
     ${NICE} make -j{{ nimbus_eth1_build_jobs }} {{ nimbus_eth1_build_targets | join(" ") }}
         LOG_LEVEL="TRACE" NIMFLAGS="{{ nimbus_eth1_build_nim_flags | join(" ") }}"
@@ -42,11 +43,21 @@ function buildBinaries() {
     find build -mtime +{{ nimbus_eth1_build_days_kept }} -exec rm '{}' \+
 }
 
+function cleanUp() {
+    # Stale submodules
+    git clean -ffdx vendor/
+    # TODO: Uncomment if related build issue show up
+    # rm -rf ${XDG_CACHE_HOME}/nim
+}
+
 #-------------------------------------------------------------------------------
 
 BRANCH="{{ nimbus_eth1_repo_branch }}"
 SERVICE="{{ nimbus_eth1_service_name }}.service"
 BUILD_DIR="{{ nimbus_eth1_repo_path }}"
+
+export XDG_CACHE_HOME="${BUILD_DIR}/.cache"
+mkdir -p "$XDG_CACHE_HOME"
 
 if [[ "${USER}" != "{{ nimbus_eth1_service_user }}" ]]; then
     echo "Incorrect user: ${USER}" >&2
@@ -74,6 +85,8 @@ else
     echo " >>> Building binaries..."
     buildBinaries
 fi
+
+cleanUp
 
 # Avoid faiure on first Ansible run due to missing service.
 if [[ $(systemctl is-active "${SERVICE}" || true) == "inactive" ]]; then

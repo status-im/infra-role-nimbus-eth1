@@ -1,4 +1,12 @@
 ---
+- name: Force Git HTTP/1.1 for Nimbus user
+  community.general.git_config:
+    name: http.version
+    scope: global
+    value: HTTP/1.1
+  become: true
+  become_user: "{{ nimbus_eth1_service_user }}"
+
 - name: Clone repo branch
   git:
     repo: '{{ nimbus_eth1_repo_url }}'

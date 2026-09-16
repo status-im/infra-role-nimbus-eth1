@@ -53,6 +53,7 @@ nimbus_eth1_jwt_secret_path: '{{ nimbus_eth1_data_path }}/jwt.hex'
 
 #nimbus_eth1_era_dir: ~
 #nimbus_eth1_era1_dir: ~
+#nimbus_eth1_ere_dir: ~
 
 # Build
 nimbus_eth1_build_timer_enabled: true
